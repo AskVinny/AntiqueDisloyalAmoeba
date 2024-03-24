@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 const firebase_url =
   "https://us-central1-askvinny-dd8ea.cloudfunctions.net/addEmailToAirtable";
-document.getElementById("submitButton").addEventListener("click", function () {
+document.getElementById("submitEmailButton").addEventListener("click", function () {
   var email = document.getElementById("headerInput3-1").value;
   var timestamp = new Date().toISOString();
 
