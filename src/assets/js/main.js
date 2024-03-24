@@ -47,7 +47,7 @@ document
     var timestamp = new Date().toISOString();
 
     // Use the path specified in your firebase.json rewrites configuration
-    fetch("/addEmailToAirtable", {
+    fetch(firebase_url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
