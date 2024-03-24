@@ -23,6 +23,29 @@
       href="src/assets/favicon.png"
     />
     <script src="src/assets/js/main.js"></script>
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyCRM3xOIoLB2AvGYYNSOUVgwxmVW54t0b8",
+        authDomain: "askvinny-dd8ea.firebaseapp.com",
+        projectId: "askvinny-dd8ea",
+        storageBucket: "askvinny-dd8ea.appspot.com",
+        messagingSenderId: "471265237207",
+        appId: "1:471265237207:web:ed541ca46d9d19e0fa7892",
+        measurementId: "G-GM2TX56J8J",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+    </script>
   </head>
   <body class="antialiased bg-body text-body font-body">
     <div>
