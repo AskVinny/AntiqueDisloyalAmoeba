@@ -16,7 +16,7 @@ exports.addEmailToAirtable = functions.https.onRequest((request, response) => {
 
       // Define the Axios request config
       const config = {
-        method: "post",
+        method: "POST",
         url: `https://api.airtable.com/v0/${
           functions.config().airtable.base
         }/tbl3Mm0Exzo8eUkPg`,

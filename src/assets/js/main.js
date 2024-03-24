@@ -64,7 +64,7 @@ document
       .then((data) => {
         console.log("Success:", data);
         // Handle successful response here, such as updating the UI
-        document.getElementById("emailInput").value = ""; // Optionally clear the input field
+        document.getElementById("headerInput3").value = ""; // Optionally clear the input field
         // Optionally display a success message to the user
       })
       .catch((error) => {
