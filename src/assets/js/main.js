@@ -38,38 +38,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 })
-const mySecret = process.env['airtable_api']
+const firebase_url = ''
 document.getElementById('submitButton').addEventListener('click', function() {
-      var email = document.getElementById('headerInput3-1').value;
-      var timestamp = new Date().toISOString();
+  var email = document.getElementById('headerInput3-1').value;
+  var timestamp = new Date().toISOString();
 
-      var airtableApiKey = mySecret;
-      var baseId = 'appqs3SmShdPgX4jA';
-      var tableName = 'tbl3Mm0Exzo8eUkPg';
-      var url = `https://api.airtable.com/v0/${baseId}/${encodeURIComponent(tableName)}`;
-
-      var data = {
-          "fields": {
-              "Email": email,
-              "Timestamp": timestamp
-          }
-      };
-
-      fetch(url, {
-          method: 'POST',
-          headers: {
-              'Authorization': `Bearer ${airtableApiKey}`,
-              'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(data)
-      })
-      .then(response => response.json())
-      .then(data => {
-          console.log('Success:', data);
-          // Optionally, clear the input field after successful submission
-          document.getElementById('emailInput').value = '';
-      })
-      .catch((error) => {
-          console.error('Error:', error);
-      });
-  });;
+  fetch('YOUR_FIREBASE_FUNCTION_URL', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({email, timestamp}),
+  })
+  .then
