@@ -56,8 +56,7 @@ document.getElementById("submitButton").addEventListener("click", function () {
         throw new Error("Network response was not ok");
       }
       return response.json(); // Parse the JSON in the response
-    })
-    .then((data) => {
+    }).then((data) => {
       console.log("Success:", data);
       // Handle successful response here, such as updating the UI
       // For example, clear the input field or display a success message
