@@ -40,31 +40,34 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 const firebase_url =
   "https://us-central1-askvinny-dd8ea.cloudfunctions.net/addEmailToAirtable";
-document.getElementById("submitEmailButton").addEventListener("click", function () {
-  var email = document.getElementById("headerInput3-1").value;
-  var timestamp = new Date().toISOString();
+document
+  .getElementById("submitEmailButton")
+  .addEventListener("click", function () {
+    var email = document.getElementById("headerInput3-1").value;
+    var timestamp = new Date().toISOString();
 
-  fetch(firebase_url, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ email, timestamp }),
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      return response.json(); // Parse the JSON in the response
-    }).then((data) => {
-      console.log("Success:", data);
-      // Handle successful response here, such as updating the UI
-      // For example, clear the input field or display a success message
-      document.getElementById("emailInput").value = ""; // Clear the input field
-      // Display a success message to the user
+    // Use the path specified in your firebase.json rewrites configuration
+    fetch("/addEmailToAirtable", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, timestamp }),
     })
-    .catch((error) => {
-      console.error("Error:", error);
-      // Handle errors here, such as displaying an error message to the user
-    });
-});
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json(); // Parse the JSON in the response
+      })
+      .then((data) => {
+        console.log("Success:", data);
+        // Handle successful response here, such as updating the UI
+        document.getElementById("emailInput").value = ""; // Optionally clear the input field
+        // Optionally display a success message to the user
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        // Handle errors here, such as displaying an error message to the user
+      });
+  });
