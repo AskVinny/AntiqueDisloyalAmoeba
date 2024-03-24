@@ -7,6 +7,8 @@ const corsHandler = cors({ origin: true });
 
 exports.addEmailToAirtable = functions.https.onRequest((request, response) => {
   corsHandler(request, response, () => {
+    console.log("Request received:", request.body);
+    console.log("Method received:", request.method);
     // Wrap the entire function logic within the CORS middleware
     // Proceed only if it's a POST request; otherwise, respond with 405 for non-OPTIONS, non-POST requests
     if (request.method === "POST") {
