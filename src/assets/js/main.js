@@ -137,3 +137,7 @@ hideImageOnMobile();
 
 // Optionally, call the function on window resize to handle dynamic changes
 window.addEventListener('resize', hideImageOnMobile);
+
+document.getElementById('trustpilot').addEventListener('click', function() {
+  window.location.href = 'https://uk.trustpilot.com/review/askvinny.co.uk';
+});
