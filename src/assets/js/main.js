@@ -45,6 +45,32 @@ document
   .getElementById("submitEmailButton")
   .addEventListener("click", function () {
     var email = document.getElementById("headerInput3-1").value;
+    var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Simple email regex for demonstration
+
+    // Check if email matches the regex pattern
+    if (!regex.test(email)) {
+      // If email is invalid, show error message and change button color
+      document.getElementById("headerInput3-1").value = ""; // Clear the input
+      var errorMessage = document.getElementById("emailError");
+      if (!errorMessage) {
+        errorMessage = document.createElement("div");
+        errorMessage.id = "emailError";
+        errorMessage.style.color = "red";
+        errorMessage.textContent = "Please enter a valid email";
+        document.getElementById("headerInput3-1").parentNode.insertBefore(errorMessage, document.getElementById("headerInput3-1").nextSibling);
+      }
+
+      // Change the button to red, then fade to purple
+      var submitButton = document.getElementById("submitEmailButton");
+      submitButton.style.backgroundColor = "red";
+      setTimeout(function() {
+        submitButton.style.transition = "background-color 2s";
+        submitButton.style.backgroundColor = "#4F46E5"; // Assuming purple color
+      }, 1000); // Start the fade to purple after 1 second
+
+      return; // Exit the function early
+    }
+
     var timestamp = new Date().toISOString();
 
     // Use the path specified in your firebase.json rewrites configuration
@@ -69,7 +95,11 @@ document
         console.log("Success:", data);
         // Handle successful response here, such as updating the UI
         document.getElementById("headerInput3-1").value = ""; // Optionally clear the input field
-        // Optionally display a success message to the user
+        // Get the submit button and update its properties
+        var submitButton = document.getElementById("submitEmailButton");
+        submitButton.style.backgroundColor = "#25D366"; // Set the button color to WhatsApp green
+        submitButton.innerText = "Thanks, We'll be in touch soon"; // Change the button text
+
       })
       .catch((error) => {
         console.error("Error:", error);
