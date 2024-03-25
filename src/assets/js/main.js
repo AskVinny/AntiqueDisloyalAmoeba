@@ -52,8 +52,8 @@ document
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Requested-With"
-        
+        "Access-Control-Allow-Headers":
+          "Content-Type, Authorization, X-Requested-With",
       },
       body: JSON.stringify({ email, timestamp }),
     })
@@ -67,7 +67,7 @@ document
       .then((data) => {
         console.log("Success:", data);
         // Handle successful response here, such as updating the UI
-        document.getElementById("headerInput3").value = ""; // Optionally clear the input field
+        document.getElementById("headerInput3-1").value = ""; // Optionally clear the input field
         // Optionally display a success message to the user
       })
       .catch((error) => {
