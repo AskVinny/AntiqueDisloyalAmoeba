@@ -107,13 +107,14 @@ document
       });
   });
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
   var submitHeaderButton = document.getElementById("submitHeaderButton");
   var documentContainer = document.getElementById("waitlistContainer");
-  submitHeaderButton.addEventListener("click", function () {
+
+  submitHeaderButton.addEventListener("click", function() {
     // Remove the button
     submitHeaderButton.parentNode.removeChild(submitHeaderButton);
-    submitHeaderButton.textContent = 'Click to Submit'
+
     // Create and insert the input field and submit button
     var inputHtml = `
       <div class="w-full xl:flex-1" id="inputContainer">
@@ -123,6 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
           type="text"
           placeholder="Enter email here"
         />
+        <div id="emailError" style="color: red; display: none;">Please enter a valid email</div>
       </div>
       <div class="w-full xl:w-auto">
         <div class="block">
@@ -137,17 +139,61 @@ document.addEventListener("DOMContentLoaded", function () {
       </div>
     `;
     documentContainer.innerHTML += inputHtml;
-    documentContainer.classList.add('mb-16',
-                                    'p-1.5',
-                                    'xl:pl-7',
-                                    'inline-block',
-                                    'md:max-w-xl',
-                                    'w-full',
-                                    'border-2',
-                                    'border-black',
-                                    'rounded-3xl',
-                                    'focus-within:ring',
-                                    'focus-within:ring-indigo-300');
+    documentContainer.classList.add('mb-16', 'p-1.5', 'xl:pl-7', 'inline-block', 'md:max-w-xl', 'w-full', 'border-2', 'border-black', 'rounded-3xl', 'focus-within:ring', 'focus-within:ring-indigo-300');
+
+    var submitEmailButton = document.getElementById("submitEmailButton");
+    submitEmailButton.addEventListener("click", function() {
+      var emailInput = document.getElementById("headerInput3-1");
+      var email = emailInput.value;
+      var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      var errorMessage = document.getElementById("emailError");
+
+      if (!regex.test(email)) {
+        emailInput.value = "";
+        errorMessage.style.display = "block"; // Show error message
+        submitEmailButton.classList.add("shake");
+
+        setTimeout(function() {
+          submitEmailButton.style.transition = "background-color 2s";
+          submitEmailButton.style.backgroundColor = "red";
+          setTimeout(() => {
+            submitEmailButton.style.backgroundColor = "#4F46E5"; // Fade back to original color
+            errorMessage.style.display = "none"; // Hide error message after showing
+            submitEmailButton.classList.remove("shake");
+          }, 2000);
+        }, 1000);
+
+        return;
+      }
+
+      // Proceed with the fetch request if the email is valid
+      var timestamp = new Date().toISOString();
+      fetch("https://us-central1-askvinny-dd8ea.cloudfunctions.net/addEmailToAirtable", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify({ email, timestamp }),
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log("Success:", data);
+        // Update UI to reflect successful submission
+        submitEmailButton.innerText = "Thanks - We'll be in touch soon";
+        submitEmailButton.style.backgroundColor = "#25D366"; // WhatsApp green
+        emailInput.value = ""; // Clear the input field
+      })
+      .catch(error => {
+        console.error("Error:", error);
+        // Optionally, handle errors, such as retrying the request or displaying an error message
+      });
+    });
   });
 });
 
