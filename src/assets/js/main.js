@@ -55,14 +55,19 @@ document
         errorMessage.id = "emailError";
         errorMessage.style.color = "red";
         errorMessage.textContent = "Please enter a valid email";
-        document.getElementById("headerInput3-1").parentNode.insertBefore(errorMessage, document.getElementById("headerInput3-1").nextSibling);
+        document
+          .getElementById("headerInput3-1")
+          .parentNode.insertBefore(
+            errorMessage,
+            document.getElementById("headerInput3-1").nextSibling,
+          );
       }
 
       var submitButton = document.getElementById("submitEmailButton");
       submitButton.style.backgroundColor = "red";
       submitButton.classList.add("shake"); // Add shake class
 
-      setTimeout(function() {
+      setTimeout(function () {
         submitButton.style.transition = "background-color 2s";
         submitButton.style.backgroundColor = "#4F46E5"; // Fade to purple
         errorMessage.remove(); // Remove the error message
@@ -99,7 +104,6 @@ document
         var submitButton = document.getElementById("submitEmailButton");
         submitButton.style.backgroundColor = "#25D366"; // Set the button color to WhatsApp green
         submitButton.innerText = "Thanks, We'll be in touch soon"; // Change the button text
-
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -107,19 +111,19 @@ document
       });
   });
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   var submitHeaderButton = document.getElementById("submitHeaderButton");
   var documentContainer = document.getElementById("waitlistContainer");
 
-  submitHeaderButton.addEventListener("click", function() {
+  submitHeaderButton.addEventListener("click", function () {
     // Remove the button
     submitHeaderButton.parentNode.removeChild(submitHeaderButton);
 
     // Create and insert the input field and submit button
     var inputHtml = `
-      <div class="w-full xl:flex-1" id="inputContainer">
+      <div class="w-full lg:flex-1" id="inputContainer">
         <input
-          class="p-3 xl:p-0 xl:pr-7 w-full text-gray-600 placeholder-gray-600 outline-none"
+          class="p-3 lg:p-0 lg:pr-7 w-full text-gray-600 placeholder-gray-600 outline-none"
           id="headerInput3-1"
           type="text"
           placeholder="Enter email here"
@@ -139,10 +143,22 @@ document.addEventListener("DOMContentLoaded", function() {
       </div>
     `;
     documentContainer.innerHTML += inputHtml;
-    documentContainer.classList.add('mb-16', 'p-1.5', 'xl:pl-7', 'inline-block', 'md:max-w-xl', 'w-full', 'border-2', 'border-black', 'rounded-3xl', 'focus-within:ring', 'focus-within:ring-indigo-300');
+    documentContainer.classList.add(
+      "mb-16",
+      "p-1.5",
+      "xl:pl-7",
+      "inline-block",
+      "md:max-w-xl",
+      "w-full",
+      "border-2",
+      "border-black",
+      "rounded-3xl",
+      "focus-within:ring",
+      "focus-within:ring-indigo-300",
+    );
 
     var submitEmailButton = document.getElementById("submitEmailButton");
-    submitEmailButton.addEventListener("click", function() {
+    submitEmailButton.addEventListener("click", function () {
       var emailInput = document.getElementById("headerInput3-1");
       var email = emailInput.value;
       var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -153,7 +169,7 @@ document.addEventListener("DOMContentLoaded", function() {
         errorMessage.style.display = "block"; // Show error message
         submitEmailButton.classList.add("shake");
 
-        setTimeout(function() {
+        setTimeout(function () {
           submitEmailButton.style.transition = "background-color 2s";
           submitEmailButton.style.backgroundColor = "red";
           setTimeout(() => {
@@ -168,43 +184,47 @@ document.addEventListener("DOMContentLoaded", function() {
 
       // Proceed with the fetch request if the email is valid
       var timestamp = new Date().toISOString();
-      fetch("https://us-central1-askvinny-dd8ea.cloudfunctions.net/addEmailToAirtable", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
+      fetch(
+        "https://us-central1-askvinny-dd8ea.cloudfunctions.net/addEmailToAirtable",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+          },
+          body: JSON.stringify({ email, timestamp }),
         },
-        body: JSON.stringify({ email, timestamp }),
-      })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then(data => {
-        console.log("Success:", data);
-        // Update UI to reflect successful submission
-        submitEmailButton.innerText = "Thanks - We'll be in touch soon";
-        submitEmailButton.style.backgroundColor = "#25D366"; // WhatsApp green
-        emailInput.value = ""; // Clear the input field
-      })
-      .catch(error => {
-        console.error("Error:", error);
-        // Optionally, handle errors, such as retrying the request or displaying an error message
-      });
+      )
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          console.log("Success:", data);
+          // Update UI to reflect successful submission
+          submitEmailButton.innerText = "Thanks - We'll be in touch soon";
+          submitEmailButton.style.backgroundColor = "#25D366"; // WhatsApp green
+          emailInput.value = ""; // Clear the input field
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          // Optionally, handle errors, such as retrying the request or displaying an error message
+        });
     });
   });
 });
 
 // Function to hide an image on mobile devices
 function hideImageOnMobile() {
-  var image = document.getElementById('heroImageContainer'); // Replace 'yourImageId' with your image's ID
-  if (window.innerWidth <= 768) { // 768px is a common breakpoint for mobile devices
-    image.style.visibility = 'hidden';
-      image.style.display = 'none'; // Hides the image on mobile devices
+  var image = document.getElementById("heroImageContainer"); // Replace 'yourImageId' with your image's ID
+  if (window.innerWidth <= 768) {
+    // 768px is a common breakpoint for mobile devices
+    image.style.visibility = "hidden";
+    image.style.display = "none"; // Hides the image on mobile devices
   } else {
-    image.style.visibility = 'visible'; // Makes sure the image is visible on larger devices
+    image.style.visibility = "visible"; // Makes sure the image is visible on larger devices
   }
 }
 
@@ -212,8 +232,8 @@ function hideImageOnMobile() {
 hideImageOnMobile();
 
 // Optionally, call the function on window resize to handle dynamic changes
-window.addEventListener('resize', hideImageOnMobile);
+window.addEventListener("resize", hideImageOnMobile);
 
-document.getElementById('trustpilot').addEventListener('click', function() {
-  window.location.href = 'https://uk.trustpilot.com/review/askvinny.co.uk';
+document.getElementById("trustpilot").addEventListener("click", function () {
+  window.location.href = "https://uk.trustpilot.com/review/askvinny.co.uk";
 });
