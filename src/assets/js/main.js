@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Function to hide an image on mobile devices
 function hideImageOnMobile() {
-  var image = document.getElementById('heroImage'); // Replace 'yourImageId' with your image's ID
+  var image = document.getElementById('heroImageContainer'); // Replace 'yourImageId' with your image's ID
   if (window.innerWidth <= 768) { // 768px is a common breakpoint for mobile devices
     image.style.visibility = 'hidden'; // Hides the image on mobile devices
   } else {
