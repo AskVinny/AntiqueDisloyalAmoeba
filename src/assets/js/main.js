@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
           class="p-3 xl:p-0 xl:pr-7 w-full text-gray-600 placeholder-gray-600 outline-none"
           id="headerInput3-1"
           type="text"
-          placeholder="Enter email to get started"
+          placeholder="Enter email here"
         />
       </div>
       <div class="w-full xl:w-auto">
@@ -106,6 +106,16 @@ document.addEventListener("DOMContentLoaded", function () {
       </div>
     `;
     documentContainer.innerHTML += inputHtml;
-    documentContainer.classList.add("border-2", "border-black", "rounded-3xl");
+    documentContainer.classList.add('mb-16',
+                                    'p-1.5',
+                                    'xl:pl-7',
+                                    'inline-block',
+                                    'md:max-w-xl',
+                                    'w-full',
+                                    'border-2',
+                                    'border-black',
+                                    'rounded-3xl',
+                                    'focus-within:ring',
+                                    'focus-within:ring-indigo-300');
   });
 });
