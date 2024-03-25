@@ -38,6 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 });
+
 const firebase_url =
   "https://us-central1-askvinny-dd8ea.cloudfunctions.net/addEmailToAirtable";
 document
@@ -82,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
   submitHeaderButton.addEventListener("click", function () {
     // Remove the button
     submitHeaderButton.parentNode.removeChild(submitHeaderButton);
-
+    submitHeaderButton.textContent = 'Click to Submit'
     // Create and insert the input field and submit button
     var inputHtml = `
       <div class="w-full xl:flex-1" id="inputContainer">
