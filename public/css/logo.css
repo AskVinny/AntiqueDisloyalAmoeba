@@ -1,32 +1,35 @@
-  .logo-wrapper {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100px; /* Adjust height as needed */
-    background-color: #fff;
-  }
-  .logo-container {
-    display: flex;
-    align-items: center;
-  }
-  .circle {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background-color: #000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 20px;
-  }
-  .circle span {
-    color: #6366F1; /* Indigo-500 for the letter V */
-    font-weight: bold;
-    font-size: 32px;
-  }
-  .text {
-    color: #000;
-    font-size: 24px;
-    font-weight: bold;
-  }
+.logo-wrapper {
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px; /* Set total width */
+  height: 75px; /* Set total height */
+  background-color: transparent; /* Transparent background */
+}
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around; /* Adjust spacing inside the container */
+  width: 100%; /* Fill the wrapper */
+  height: 100%; /* Fill the wrapper */
+}
+.circle {
+  width: 50px; /* Adjusted for new dimensions */
+  height: 50px; /* Adjusted for new dimensions */
+  border-radius: 50%;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.circle span {
+  color: #6366F1; /* Indigo-500 for the letter V */
+  font-weight: bold;
+  font-size: 24px; /* Adjusted for new dimensions */
+}
+.text {
+  color: #000;
+  font-size: 20px; /* Adjusted for new dimensions */
+  font-weight: 900; /* Extra bold */
+}
