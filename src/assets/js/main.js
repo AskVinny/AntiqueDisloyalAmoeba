@@ -45,12 +45,10 @@ document
   .getElementById("submitEmailButton")
   .addEventListener("click", function () {
     var email = document.getElementById("headerInput3-1").value;
-    var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Simple email regex for demonstration
+    var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    // Check if email matches the regex pattern
     if (!regex.test(email)) {
-      // If email is invalid, show error message and change button color
-      document.getElementById("headerInput3-1").value = ""; // Clear the input
+      document.getElementById("headerInput3-1").value = "";
       var errorMessage = document.getElementById("emailError");
       if (!errorMessage) {
         errorMessage = document.createElement("div");
@@ -60,17 +58,19 @@ document
         document.getElementById("headerInput3-1").parentNode.insertBefore(errorMessage, document.getElementById("headerInput3-1").nextSibling);
       }
 
-      // Change the button to red, then fade to purple
       var submitButton = document.getElementById("submitEmailButton");
       submitButton.style.backgroundColor = "red";
+      submitButton.classList.add("shake"); // Add shake class
+
       setTimeout(function() {
         submitButton.style.transition = "background-color 2s";
-        submitButton.style.backgroundColor = "#4F46E5"; // Assuming purple color
-      }, 1000); // Start the fade to purple after 1 second
+        submitButton.style.backgroundColor = "#4F46E5"; // Fade to purple
+        errorMessage.remove(); // Remove the error message
+        submitButton.classList.remove("shake"); // Remove shake class after animation
+      }, 1000); // Start after 1 second
 
-      return; // Exit the function early
+      return;
     }
-
     var timestamp = new Date().toISOString();
 
     // Use the path specified in your firebase.json rewrites configuration
