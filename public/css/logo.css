@@ -1,7 +1,6 @@
 .logo-wrapper {
   font-family: 'Arial', sans-serif;
   display: flex;
-  justify-content: start; /* Align items to the start for closer spacing */
   align-items: center;
   width: 250px; /* Set total width */
   height: 75px; /* Set total height */
@@ -15,7 +14,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 10px; /* Reduced space to keep elements closer */
+  margin-right: 5px; /* Adjust space between the circle and the text */
 }
 .circle span {
   color: #6366F1; /* Indigo-500 for the letter V */
@@ -26,5 +25,5 @@
   color: #000;
   font-size: 20px; /* Ensure text size is consistent */
   font-weight: 900; /* Extra bold for 'AskVinny' */
-  margin: 0; /* Remove any default margins */
+  display: inline-block; /* Ensure text alignment with the circle */
 }
