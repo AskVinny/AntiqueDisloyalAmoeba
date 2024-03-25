@@ -51,6 +51,9 @@ document
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Requested-With"
+        
       },
       body: JSON.stringify({ email, timestamp }),
     })
