@@ -771,6 +771,10 @@ video {
   width: 100%;
 }
 
+w-half {
+  width: 50%;
+}
+
 .w-px {
   width: 1px;
 }
