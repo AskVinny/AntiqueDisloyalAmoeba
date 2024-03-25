@@ -14,7 +14,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-
   // close
   const close = document.querySelectorAll(".navbar-close");
   const backdrop = document.querySelectorAll(".navbar-backdrop");
@@ -77,10 +76,10 @@ document
       });
   });
 
-document.addEventListener('DOMContentLoaded', function() {
-  var submitHeaderButton = document.getElementById('submitHeaderButton');
-
-  submitHeaderButton.addEventListener('click', function() {
+document.addEventListener("DOMContentLoaded", function () {
+  var submitHeaderButton = document.getElementById("submitHeaderButton");
+  var documentContainer = document.getElementById("waitlistContainer");
+  submitHeaderButton.addEventListener("click", function () {
     // Remove the button
     submitHeaderButton.parentNode.removeChild(submitHeaderButton);
 
@@ -106,6 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
       </div>
     `;
-    document.getElementById('waitlistContainer').innerHTML += inputHtml;
+    documentContainer.innerHTML += inputHtml;
+    documentContainer.classList.add("border-2", "border-black", "rounded-3xl");
   });
 });
