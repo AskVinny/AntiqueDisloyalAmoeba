@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+
   // close
   const close = document.querySelectorAll(".navbar-close");
   const backdrop = document.querySelectorAll(".navbar-backdrop");
@@ -75,3 +76,4 @@ document
         // Handle errors here, such as displaying an error message to the user
       });
   });
+
