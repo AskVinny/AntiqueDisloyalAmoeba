@@ -1556,3 +1556,36 @@ w-half {
     display: none !important;
   }
 }
+
+.logo-wrapper {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px; /* Adjust height as needed */
+  background-color: #fff;
+}
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+.circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+}
+.circle span {
+  color: #6366F1; /* Indigo-500 for the letter V */
+  font-weight: bold;
+  font-size: 32px;
+}
+.text {
+  color: #000;
+  font-size: 24px;
+  font-weight: bold;
+}
