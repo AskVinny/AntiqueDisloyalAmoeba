@@ -49,18 +49,3 @@ exports.addEmailToAirtable = onRequest(
   },
 );
 
-// Function to hide an image on mobile devices
-function hideImageOnMobile() {
-  var image = document.getElementById('heroImage'); // Replace 'yourImageId' with your image's ID
-  if (window.innerWidth <= 768) { // 768px is a common breakpoint for mobile devices
-    image.style.visibility = 'hidden'; // Hides the image on mobile devices
-  } else {
-    image.style.visibility = 'visible'; // Makes sure the image is visible on larger devices
-  }
-}
-
-// Call the function on initial load
-hideImageOnMobile();
-
-// Optionally, call the function on window resize to handle dynamic changes
-window.addEventListener('resize', hideImageOnMobile);
