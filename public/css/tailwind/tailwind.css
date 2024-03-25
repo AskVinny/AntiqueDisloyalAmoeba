@@ -1547,4 +1547,12 @@ w-half {
   .xl\:text-10xl {
     font-size: 3.75rem;
   }
+
+}
+
+/* Hide the div on screens less than 768px wide */
+@media (max-width: 767px) {
+  .hide-on-mobile {
+    display: none;
+  }
 }
