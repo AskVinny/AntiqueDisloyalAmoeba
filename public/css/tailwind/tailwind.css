@@ -1553,6 +1553,6 @@ w-half {
 /* Hide the div on screens less than 768px wide */
 @media (max-width: 767px) {
   body .hide-on-mobile {
-    display: none;
+    display: none !important;
   }
 }
