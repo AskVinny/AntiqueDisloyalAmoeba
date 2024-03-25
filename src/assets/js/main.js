@@ -77,3 +77,35 @@ document
       });
   });
 
+document.addEventListener('DOMContentLoaded', function() {
+  var submitHeaderButton = document.getElementById('submitHeaderButton');
+
+  submitHeaderButton.addEventListener('click', function() {
+    // Remove the button
+    submitHeaderButton.parentNode.removeChild(submitHeaderButton);
+
+    // Create and insert the input field and submit button
+    var inputHtml = `
+      <div class="w-full xl:flex-1" id="inputContainer">
+        <input
+          class="p-3 xl:p-0 xl:pr-7 w-full text-gray-600 placeholder-gray-600 outline-none"
+          id="headerInput3-1"
+          type="text"
+          placeholder="Enter email to get started"
+        />
+      </div>
+      <div class="w-full xl:w-auto">
+        <div class="block">
+          <button
+            id="submitEmailButton"
+            class="py-4 px-7 w-full text-white font-semibold rounded-xl focus:ring focus:ring-indigo-300 bg-indigo-600 hover:bg-indigo-700 transition ease-in-out duration-200"
+            type="button"
+          >
+            Join our waitlist
+          </button>
+        </div>
+      </div>
+    `;
+    document.getElementById('waitlistContainer').innerHTML += inputHtml;
+  });
+});

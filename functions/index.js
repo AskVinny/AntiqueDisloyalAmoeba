@@ -7,6 +7,7 @@ const airtableTable = defineString('AIRTABLE_TABLE_KEY');
 const airtableBase = defineString('AIRTABLE_BASE_KEY');
 const airtableSecret = defineString('AIRTABLE_API_KEY');
 
+
 exports.addEmailToAirtable = onRequest(
   { cors: { origin: true, methods: ["POST"] } }, // Enable CORS for POST requests
   (req, res) => {
